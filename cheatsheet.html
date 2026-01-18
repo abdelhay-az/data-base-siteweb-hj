@@ -1,0 +1,75 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cheat‑sheet — SQL</title><link rel="stylesheet" href="assets/css/style.css"/>
+</head><body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo">🗄️</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+          <span>Cours Base de Données</span>
+          <span class="badge">MERISE • SQL • Projets • Exercices</span>
+        </div>
+        <small>Version 100% français • HTML/CSS/JS • Offline</small>
+      </div>
+    </div>
+    <div class="nav">
+      <a href="index.html" class="">Accueil</a>
+      <a href="course.html" class="">Cours</a>
+      <a href="exercises.html" class="">Exercices</a>
+      <a href="projects.html" class="">Projets</a>
+      <a href="glossary.html" class="">Glossaire</a>
+      <a href="cheatsheet.html" class="active">Cheat‑sheet</a>
+    </div>
+    <button class="btn small" id="toggleTheme" title="Basculer thème">🌓 Thème</button>
+  </div>
+</div>
+
+<div class="container grid">
+  <div class="card pad">
+    <h2 style="margin:0 0 6px">Cheat‑sheet SQL (mémo rapide)</h2>
+    <p class="muted" style="margin:0">Commandes essentielles avec exemples copiables.</p>
+  </div>
+  <div class="grid" style="grid-template-columns: 1fr 1fr">
+    <div class="card pad">
+      <h3 style="margin-top:0">Création (DDL)</h3>
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_95191">📋 Copier</button></div><pre id="code_95191">CREATE TABLE t(
+  id INT PRIMARY KEY,
+  libelle VARCHAR(120) NOT NULL
+);</pre></div>
+      <h3>Insertion (DML)</h3>
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_96241">📋 Copier</button></div><pre id="code_96241">INSERT INTO t(id, libelle) VALUES (1,'Test');</pre></div>
+    </div>
+    <div class="card pad">
+      <h3 style="margin-top:0">Sélection (DQL)</h3>
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_94558">📋 Copier</button></div><pre id="code_94558">SELECT * FROM t WHERE id=1;</pre></div>
+      <h3>Jointure</h3>
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_32463">📋 Copier</button></div><pre id="code_32463">SELECT a.*, b.*
+FROM a
+JOIN b ON b.id_a = a.id;</pre></div>
+    </div>
+    <div class="card pad">
+      <h3 style="margin-top:0">Agrégation</h3>
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_76404">📋 Copier</button></div><pre id="code_76404">SELECT categorie, COUNT(*) nb
+FROM produit
+GROUP BY categorie
+HAVING COUNT(*) >= 2;</pre></div>
+      <h3>Transactions</h3>
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_79853">📋 Copier</button></div><pre id="code_79853">START TRANSACTION;
+-- opérations
+COMMIT; -- ou ROLLBACK;</pre></div>
+    </div>
+    <div class="card pad">
+      <h3 style="margin-top:0">Sécurité</h3>
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_94862">📋 Copier</button></div><pre id="code_94862">GRANT SELECT ON magasin.* TO 'lecteur'@'%';
+REVOKE SELECT ON magasin.* FROM 'lecteur'@'%';</pre></div>
+      <div class="callout warn" style="margin-top:10px"><b>Rappel</b> — En production, évitez d’utiliser un compte admin pour l’application.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">© 2026 • Site pédagogique — Base de données</div>
+<script src="assets/js/app.js"></script>
+
+</body></html>

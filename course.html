@@ -1,0 +1,51 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cours — MERISE & SQL</title><link rel="stylesheet" href="assets/css/style.css"/>
+</head><body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo">🗄️</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+          <span>Cours Base de Données</span>
+          <span class="badge">MERISE • SQL • Projets • Exercices</span>
+        </div>
+        <small>Version 100% français • HTML/CSS/JS • Offline</small>
+      </div>
+    </div>
+    <div class="nav">
+      <a href="index.html" class="">Accueil</a>
+      <a href="course.html" class="active">Cours</a>
+      <a href="exercises.html" class="">Exercices</a>
+      <a href="projects.html" class="">Projets</a>
+      <a href="glossary.html" class="">Glossaire</a>
+      <a href="cheatsheet.html" class="">Cheat‑sheet</a>
+    </div>
+    <button class="btn small" id="toggleTheme" title="Basculer thème">🌓 Thème</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="split">
+    <aside class="card sidebar">
+      <div class="searchRow">
+        <input class="input" id="search" placeholder="Rechercher : JOIN, 3NF, contrainte, index..." />
+      </div>
+      <div class="progress"><div id="bar"></div></div>
+      <div class="muted" style="margin:10px 0 12px" id="progressText">0% terminé</div>
+      <div class="list" id="lessonList"></div>
+      <hr/>
+      <div class="callout"><b>Astuce</b> — Utilisez <kbd>Ctrl</kbd> + <kbd>F</kbd> pour chercher dans un chapitre.</div>
+    </aside>
+    <main class="card content">
+      <div id="lessonView"><h2>Chargement…</h2><p class="muted">Vérifiez que JavaScript est autorisé.</p></div>
+    </main>
+  </div>
+</div>
+
+<div class="footer">© 2026 • Site pédagogique — Base de données</div>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/course.js"></script>
+</body></html>

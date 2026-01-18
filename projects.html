@@ -1,0 +1,86 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projets — Base de données</title><link rel="stylesheet" href="assets/css/style.css"/>
+</head><body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo">🗄️</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+          <span>Cours Base de Données</span>
+          <span class="badge">MERISE • SQL • Projets • Exercices</span>
+        </div>
+        <small>Version 100% français • HTML/CSS/JS • Offline</small>
+      </div>
+    </div>
+    <div class="nav">
+      <a href="index.html" class="">Accueil</a>
+      <a href="course.html" class="">Cours</a>
+      <a href="exercises.html" class="">Exercices</a>
+      <a href="projects.html" class="active">Projets</a>
+      <a href="glossary.html" class="">Glossaire</a>
+      <a href="cheatsheet.html" class="">Cheat‑sheet</a>
+    </div>
+    <button class="btn small" id="toggleTheme" title="Basculer thème">🌓 Thème</button>
+  </div>
+</div>
+
+<div class="container grid">
+  <div class="card pad">
+    <h2 style="margin:0 0 6px">Mini‑projets (guidés)</h2>
+    <p class="muted" style="margin:0">Besoins → règles de gestion → MCD → MLD → SQL → requêtes.</p>
+  </div>
+
+  <div class="grid" style="grid-template-columns: repeat(3, 1fr)">
+    <div class="card pad">
+      <h3 style="margin:0 0 6px">📚 Bibliothèque</h3>
+      <p class="muted">Adhérents, livres, auteurs, emprunts, retours.</p>
+      <details><summary class="btn small">Voir un extrait SQL</summary><div style="margin-top:10px"><div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_25190">📋 Copier</button></div><pre id="code_25190">CREATE TABLE emprunt(
+  id_emprunt INT PRIMARY KEY,
+  id_adherent INT NOT NULL,
+  id_livre INT NOT NULL,
+  date_emprunt DATE NOT NULL,
+  date_retour_prevue DATE NOT NULL,
+  date_retour DATE,
+  FOREIGN KEY(id_adherent) REFERENCES adherent(id_adherent),
+  FOREIGN KEY(id_livre) REFERENCES livre(id_livre)
+);</pre></div></div></details>
+    </div>
+
+    <div class="card pad">
+      <h3 style="margin:0 0 6px">🛒 E‑commerce</h3>
+      <p class="muted">Clients, produits, commandes, lignes, paiement.</p>
+      <details><summary class="btn small">Voir une requête</summary><div style="margin-top:10px"><div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_50983">📋 Copier</button></div><pre id="code_50983">SELECT id_cmd, SUM(quantite * prix_unitaire) AS total
+FROM ligne_commande
+GROUP BY id_cmd
+ORDER BY total DESC;</pre></div></div></details>
+    </div>
+
+    <div class="card pad">
+      <h3 style="margin:0 0 6px">🏫 École</h3>
+      <p class="muted">Étudiants, filières, modules, notes, absences.</p>
+      <details><summary class="btn small">Voir une contrainte</summary><div style="margin-top:10px"><div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_52846">📋 Copier</button></div><pre id="code_52846">CREATE TABLE note(
+  id_etudiant INT NOT NULL,
+  id_module INT NOT NULL,
+  note DECIMAL(4,2) NOT NULL CHECK (note BETWEEN 0 AND 20),
+  PRIMARY KEY(id_etudiant, id_module)
+);</pre></div></div></details>
+    </div>
+  </div>
+
+  <div class="card pad">
+    <h3 style="margin:0 0 6px">Plan de travail recommandé</h3>
+    <div class="twoCol">
+      <div class="note"><b>1) Analyse</b><div class="muted" style="margin-top:6px">Lister acteurs, entités et règles de gestion.</div></div>
+      <div class="note"><b>2) Modélisation</b><div class="muted" style="margin-top:6px">MCD (cardinalités) puis MLD (PK/FK).</div></div>
+      <div class="note"><b>3) Implémentation</b><div class="muted" style="margin-top:6px">MPD : types, index, contraintes, script SQL.</div></div>
+      <div class="note"><b>4) Requêtes</b><div class="muted" style="margin-top:6px">SELECT/JOIN/GROUP BY + tests réalistes.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">© 2026 • Site pédagogique — Base de données</div>
+<script src="assets/js/app.js"></script>
+
+</body></html>

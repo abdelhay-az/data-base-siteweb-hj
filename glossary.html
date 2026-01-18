@@ -1,0 +1,56 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Glossaire — Base de données</title><link rel="stylesheet" href="assets/css/style.css"/>
+</head><body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo">🗄️</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+          <span>Cours Base de Données</span>
+          <span class="badge">MERISE • SQL • Projets • Exercices</span>
+        </div>
+        <small>Version 100% français • HTML/CSS/JS • Offline</small>
+      </div>
+    </div>
+    <div class="nav">
+      <a href="index.html" class="">Accueil</a>
+      <a href="course.html" class="">Cours</a>
+      <a href="exercises.html" class="">Exercices</a>
+      <a href="projects.html" class="">Projets</a>
+      <a href="glossary.html" class="active">Glossaire</a>
+      <a href="cheatsheet.html" class="">Cheat‑sheet</a>
+    </div>
+    <button class="btn small" id="toggleTheme" title="Basculer thème">🌓 Thème</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="grid" style="grid-template-columns: 1fr 1fr">
+    <div class="card pad">
+      <h2 style="margin:0 0 10px">Glossaire</h2>
+      <input class="input" id="gSearch" placeholder="Rechercher un terme…" />
+      <div id="gList" class="list" style="margin-top:10px"></div>
+    </div>
+    <div class="card pad">
+      <h2 style="margin:0 0 10px">Flashcards</h2>
+      <div class="callout"><b>Mode d’emploi</b> — Cliquez sur la carte pour basculer, puis utilisez Prev/Next.</div>
+      <div id="cardBox" class="card pad" style="cursor:pointer; background: rgba(12,22,43,.18); margin-top:12px">
+        <b id="fcTerm">Cliquez pour commencer</b>
+        <p id="fcDef" class="muted" style="margin:8px 0 0">Une définition s’affichera ici.</p>
+      </div>
+      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+        <button class="btn small" id="prevFc">⬅️ Prev</button>
+        <button class="btn small" id="nextFc">Next ➡️</button>
+        <button class="btn small" id="flipFc">🔁 Flip</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">© 2026 • Site pédagogique — Base de données</div>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/glossary.js"></script>
+</body></html>

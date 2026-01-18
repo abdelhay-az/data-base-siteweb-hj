@@ -1,0 +1,139 @@
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Exercices — Base de données</title><link rel="stylesheet" href="assets/css/style.css"/>
+</head><body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo">🗄️</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+          <span>Cours Base de Données</span>
+          <span class="badge">MERISE • SQL • Projets • Exercices</span>
+        </div>
+        <small>Version 100% français • HTML/CSS/JS • Offline</small>
+      </div>
+    </div>
+    <div class="nav">
+      <a href="index.html" class="">Accueil</a>
+      <a href="course.html" class="">Cours</a>
+      <a href="exercises.html" class="active">Exercices</a>
+      <a href="projects.html" class="">Projets</a>
+      <a href="glossary.html" class="">Glossaire</a>
+      <a href="cheatsheet.html" class="">Cheat‑sheet</a>
+    </div>
+    <button class="btn small" id="toggleTheme" title="Basculer thème">🌓 Thème</button>
+  </div>
+</div>
+
+<div class="container grid">
+  <div class="card pad">
+    <h2 style="margin:0 0 6px">Exercices (avec corrections)</h2>
+    <p class="muted" style="margin:0">Filtrez par thème puis ouvrez la correction. Les blocs SQL sont copiables.</p>
+    
+<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
+  <button class="btn small active" data-filter="all">Tout</button>
+  <button class="btn small" data-filter="SQL">SQL</button>
+  <button class="btn small" data-filter="MERISE">MERISE</button>
+  <button class="btn small" data-filter="JOIN">JOIN</button>
+  <button class="btn small" data-filter="SELECT">SELECT</button>
+  <button class="btn small" data-filter="AGGREGATION">AGGREGATION</button>
+  <button class="btn small" data-filter="MLD">MLD</button>
+</div>
+
+  </div>
+
+  <div class="grid" style="grid-template-columns: 1fr 1fr">
+    <div class="card pad" data-ex-card data-tags="SQL,SELECT">
+  <div class="summaryRow">
+    <div>
+      <b>Exercice 1 — SELECT & WHERE</b>
+      <div class="muted" style="margin-top:6px">Tags : SQL, SELECT</div>
+    </div>
+    <span class="tag">SQL</span>
+  </div>
+  <hr/>
+  <p>Table <b>produit</b>(id_produit, nom, prix, stock). Afficher les produits dont le prix > 200 et stock > 0, triés par prix décroissant.</p>
+  <details>
+    <summary class="btn small">✅ Voir la correction</summary>
+    <div style="margin-top:10px">
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_38820">📋 Copier</button></div><pre id="code_38820">SELECT *
+FROM produit
+WHERE prix > 200 AND stock > 0
+ORDER BY prix DESC;</pre></div>
+      <div class="callout ok" style="margin-top:10px"><b>Conseil</b> — Commencez par WHERE puis ajoutez ORDER BY.</div>
+    </div>
+  </details>
+</div><div class="card pad" data-ex-card data-tags="SQL,AGGREGATION">
+  <div class="summaryRow">
+    <div>
+      <b>Exercice 2 — GROUP BY + HAVING</b>
+      <div class="muted" style="margin-top:6px">Tags : SQL, AGGREGATION</div>
+    </div>
+    <span class="tag">SQL</span>
+  </div>
+  <hr/>
+  <p>Pour chaque marque, afficher le nombre de produits. Garder uniquement les marques avec au moins 3 produits.</p>
+  <details>
+    <summary class="btn small">✅ Voir la correction</summary>
+    <div style="margin-top:10px">
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_61666">📋 Copier</button></div><pre id="code_61666">SELECT marque, COUNT(*) AS nb_produits
+FROM produit
+GROUP BY marque
+HAVING COUNT(*) >= 3
+ORDER BY nb_produits DESC;</pre></div>
+      <div class="callout ok" style="margin-top:10px"><b>Conseil</b> — HAVING filtre les groupes (après GROUP BY).</div>
+    </div>
+  </details>
+</div><div class="card pad" data-ex-card data-tags="SQL,JOIN">
+  <div class="summaryRow">
+    <div>
+      <b>Exercice 3 — JOIN</b>
+      <div class="muted" style="margin-top:6px">Tags : SQL, JOIN</div>
+    </div>
+    <span class="tag">SQL</span>
+  </div>
+  <hr/>
+  <p>Tables : client(id_client, nom) et commande(id_cmd, id_client, date_cmd). Afficher nom du client et date de commande.</p>
+  <details>
+    <summary class="btn small">✅ Voir la correction</summary>
+    <div style="margin-top:10px">
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_92249">📋 Copier</button></div><pre id="code_92249">SELECT c.nom, cmd.date_cmd
+FROM client c
+JOIN commande cmd ON cmd.id_client = c.id_client
+ORDER BY cmd.date_cmd DESC;</pre></div>
+      <div class="callout ok" style="margin-top:10px"><b>Conseil</b> — Vérifiez toujours FK = PK.</div>
+    </div>
+  </details>
+</div><div class="card pad" data-ex-card data-tags="MERISE,MLD">
+  <div class="summaryRow">
+    <div>
+      <b>Exercice 4 — Modélisation N,N</b>
+      <div class="muted" style="margin-top:6px">Tags : MERISE, MLD</div>
+    </div>
+    <span class="tag">MERISE</span>
+  </div>
+  <hr/>
+  <p>Un étudiant suit plusieurs modules, un module est suivi par plusieurs étudiants. Proposer la table d’association (MLD).</p>
+  <details>
+    <summary class="btn small">✅ Voir la correction</summary>
+    <div style="margin-top:10px">
+      <div class="code"><div class="codebar"><span class="pill">SQL</span><button class="btn small" data-copy="#code_52255">📋 Copier</button></div><pre id="code_52255">CREATE TABLE inscription(
+  id_etudiant INT NOT NULL,
+  id_module INT NOT NULL,
+  date_inscription DATE NOT NULL,
+  PRIMARY KEY(id_etudiant, id_module),
+  FOREIGN KEY(id_etudiant) REFERENCES etudiant(id_etudiant),
+  FOREIGN KEY(id_module) REFERENCES module(id_module)
+);</pre></div>
+      <div class="callout ok" style="margin-top:10px"><b>Conseil</b> — Relation N,N ⇒ table d’association avec deux FK.</div>
+    </div>
+  </details>
+</div>
+  </div>
+</div>
+
+<div class="footer">© 2026 • Site pédagogique — Base de données</div>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/exercises.js"></script>
+</body></html>
